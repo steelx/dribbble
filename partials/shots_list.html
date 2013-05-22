@@ -1,0 +1,20 @@
+<div class="row-fluid" ng-controller="ShotsListCtrl" >
+	<ul class="thumbnails flexBox">
+		<li class="thumbnail shot" ng-repeat="shot in list.shots">
+			<strong class="title">{{ shot.title }}</strong>
+			<a href="#/shots/{{shot.id}}">
+			<img ng-src="{{ shot.image_teaser_url }}">
+			</a>
+
+			<a href="#/players/{{shot.player.username}}" class="player">
+				{{ shot.player.name }}
+			</a>
+			<ul class="the-icons clearfix">
+            	<li><i class="icon-eye-open"></i> {{ shot.views_count }}</li>
+            	<li><i class="icon-comment"></i> {{ shot.comments_count }}</li>
+            	<li><i class="icon-heart"></i> {{ shot.likes_count }}</li>
+            	<li><i class="icon-share"></i> {{ shot.rebounds_count }}</li>
+          	</ul>
+		</li>
+	</ul>
+</div>
