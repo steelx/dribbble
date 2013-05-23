@@ -6,19 +6,26 @@ controllers.controller('AppCtrl', function ($scope) {
 	$scope.name = "Ajinkya";
 });
 
-controllers.controller('ShotsListCtrl', function ($scope, $http, $routeParams) {
+controllers.controller('ShotsListCtrl', function ($scope, $routeParams, dribbbleS) {
 	var list = $routeParams.list;
 
-	$http.jsonp('http://api.dribbble.com/shots/' + list + '?callback=JSON_CALLBACK').then(function (data) {
+	dribbbleS.list(list).then(function (data) {
 		$scope.list = data.data;
-		console.log(data);
+		//console.log(data);
 	});
+
+	$scope.loadNextpage = function () {
+		dribbbleS.list(list, {page: $scope.list.page + 1}).then(function (data) {
+			$scope.list.page = data.data.page;
+			$scope.list.shots = $scope.list.shots.concat(data.data.shots);
+		});
+	};
 });
 
-controllers.controller('ShotsCtrl', function ($scope, $http, $routeParams) {
+controllers.controller('ShotsCtrl', function ($scope, $routeParams, dribbbleS) {
 	var id = $routeParams.id;
 
-	$http.jsonp('http://api.dribbble.com/shots/' + id + '?callback=JSON_CALLBACK').then(function (data) {
+	dribbbleS.shot(id).then(function (data) {
 		$scope.shot = data.data;
 	});
 });

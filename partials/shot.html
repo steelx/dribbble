@@ -4,7 +4,7 @@
             <a class="pull-left" href="{{shot.player.avatar_url}}"><img class="media-object avatar" ng-src="{{shot.player.avatar_url}}"></a>
                 <div class="media-body">
                    <h4 class="media-heading">{{ shot.title }}</h4>
-                   <p>by <a href="#/players/{{shot.player.username}}" class="player">{{ shot.player.name }}</a>, created at {{ shot.created_at | date:"dd MMM, yyyy" }}</p>
+                   <p>by <a href="#/players/{{shot.player.username}}" class="player">{{ shot.player.name }}</a>, created at {{ shot.created_at | dribbbleDate:"dd MMM, yyyy" }}</p>
                 </div>
         </div>
         <hr>
@@ -17,7 +17,7 @@
            	<li><i class="icon-comment"></i> {{ shot.comments_count }} comments</li>
            	<li><i class="icon-heart"></i> {{ shot.likes_count }} likes</li>
            	<li><i class="icon-share"></i> {{ shot.rebounds_count }} rebounds</li>
-           	<li><i class="icon-globe"></i> <a href="{{ shot.short_url }}">{{ shot.short_url }}</a></li>
+           	<li><i class="icon-globe"></i> <a href="{{ shot.short_url }}" target="_blank">{{ shot.short_url }}</a></li>
         </ul>
 
 	</div>

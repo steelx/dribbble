@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('dribbble', ['dribbble.controllers']);
+var app = angular.module('dribbble', ['dribbble.controllers', 'dribbble.filters', 'dribbble.services']);
 
 app.config(function ($routeProvider) {
 	$routeProvider
